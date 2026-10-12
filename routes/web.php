@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\projectController;
 use illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -8,9 +9,16 @@ Route::get('/', function () {
 });
 
 Route::get('/profile', [MahasiswaController::class, 'index']);
+Route::get('/projects', [projectController::class, 'index']) ->name('projects.index');
+Route::get('/projects/{id}', [projectController::class, 'show']) ->name('projects.show');
 
 Route::get('/about', function () {
     return view('page.about');
 });
-    
-Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', function () {
+        return view('admin.template');
+    })->name('home');
+
+});

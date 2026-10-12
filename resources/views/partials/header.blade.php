@@ -10,7 +10,9 @@
             <li class="nav-item">
                 <a class="nav-link px-3" href="{{ url('/profile') }}">Profile</a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link px-3" href="{{ url('/projects') }}">Projects</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link px-3" href="{{ url('/about') }}">About</a>
             </li>
