@@ -3,8 +3,10 @@
 @section('title', 'home')
 
 @section('content')
-    <div class="container mt-5">
-        <h1 class="mb-4">about</h1>
-        <p>Halaman ini akan di kembangkan untuk pembelajaran rekayasa web</p>
+    <div class="card border-0 shadow-sm">
+        <div class="card-body">
+            <h1 class="text-center mb-4">About</h1>
+            <p>Selamat di halaman About</p>
+        </div>
     </div>
 @endsection
