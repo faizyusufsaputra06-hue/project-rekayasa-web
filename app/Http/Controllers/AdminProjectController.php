@@ -101,7 +101,7 @@ class AdminProjectController extends Controller
         //
         $project = Project::findOrFail($id);
         if ($project->image && str_starts_with($project->image, 'projects/')) {
-            \illuminate\Support\Facades\Storage::disk('public')->delete($project->image);
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($project->image);
         }
         $project->delete();
         return redirect()
