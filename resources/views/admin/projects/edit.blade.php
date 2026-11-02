@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.template')
 @section('title', 'Edit Project')
 @section('content')
 <div class="card border-0 shadow-sm">
