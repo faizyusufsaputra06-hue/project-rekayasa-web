@@ -7,7 +7,6 @@
             <div class="card-body">
                 <h5>Selamat datang di halaman home</h5>
                 <p>Ini halaman admin untuk kelola data project</p>
-                <a href="{{ url('/') }}" class="btn btn-success d-inline-block w-auto">Kembali halaman dashboard</a>
             </div>
         </div>
     </div>

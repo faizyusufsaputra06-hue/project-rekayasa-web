@@ -69,16 +69,27 @@ body {
             <li class="nav-item">
                 <a class="nav-link text-white" href="{{ route('admin.projects.index') }}">Project</a>
             </li>
+            <li class="nav-item px-3 mt-3">
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit" class="btn btn-danger w-100 btn-sm">Logout</button>
+                </form>
+            </li>
         </ul>
     </div>
+
     <div class="admin-content">
         <div
             class="d-flex justify-content-between align-items-center pb-3 mb-4 border-bottom bg-white pb-3 rounded shadow-sm">
             <h3 class="fw-bold mb-0">Dashboard</h3>
-            <span class="text-muted fw-semibold">Halo, Administrator</span>
+            <span class="text-muted fw-semibold">
+            Halo, {{ Auth::user()?->name ?? 'Admin' }}
+            </span>
         </div>
         @yield('content')
     </div>
+
     @stack('scripts')
 </body>
+
 </html>
