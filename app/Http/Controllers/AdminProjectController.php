@@ -112,15 +112,12 @@ class AdminProjectController extends Controller
     }
 
     public function exportPdf()
-    {
-        $projects = Project::latest()->get();
+{
+    $projects = Project::latest()->get();
 
-        $pdf = Pdf::loadView('admin.projects.pdf', compact('projects'))
-            ->setPaper('a4', 'landscape')
-            ->setOptions([
-                'Chroot' => public_path(),
-                'isRemoteEnabled' => true,
-            ]);
-        return $pdf->stream('projects.pdf');
-    }
+    $pdf = Pdf::loadView('admin.projects.pdf', compact('projects'))
+        ->setPaper('a4', 'landscape');
+
+    return $pdf->stream('projects.pdf');
+}
 }

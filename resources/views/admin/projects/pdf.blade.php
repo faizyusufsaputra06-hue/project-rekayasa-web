@@ -59,11 +59,18 @@
             @foreach ($projects as $index => $project )
             <tr>
                 <td>{{ $index + 1 }}</td>
-                <td></td>
-                    <img src="{{ str_starts_with($project->image ?? '', 'projects/')
-                            ? asset('storage/'.$project->image)
-                            : asset('images/'.$project->image) }}" class="img-thumbnail"
-                        style="width: 80px; height: 50px; object-fit: cover;">
+                <td>
+                    @php
+                        $imagePath = str_starts_with($project->image ?? '', 'projects/')
+                            ? storage_path('app/public/'.$project->image)
+                            : public_path('images/'.$project->image);
+                    @endphp
+
+                    @if ($project->image && file_exists($imagePath))
+                        <img src="{{ $imagePath }}" style="width: 80px; height: 50px;">
+                    @else
+                        Tidak ada gambar
+                    @endif
                 </td>
                 <td>{{ $project->title }}</td>
                 <td>{{ $project->description }}</td>
