@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminProjectController extends Controller
 {
@@ -107,5 +109,18 @@ class AdminProjectController extends Controller
         return redirect()
             ->route('admin.projects.index')
             ->with('success', 'Project berhasil dihapus.');
+    }
+
+    public function exportPdf()
+    {
+        $projects = Project::latest()->get();
+
+        $pdf = Pdf::loadView('admin.projects.pdf', compact('projects'))
+            ->setPaper('a4', 'landscape')
+            ->setOptions([
+                'Chroot' => public_path(),
+                'isRemoteEnabled' => true,
+            ]);
+        return $pdf->stream('projects.pdf');
     }
 }

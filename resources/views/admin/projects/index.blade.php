@@ -5,7 +5,10 @@
     <div class="card-body">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h5>Data Project</h5>
-            <a href="{{ route('admin.projects.create') }}" class="btn btn-primary">Tambah Data</a>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <a href="{{ route('admin.projects.pdf') }}" class="btn btn-success">Export PDF</a>
+                <a href="{{ route('admin.projects.create') }}" class="btn btn-primary">Tambah Data</a>
+            </div>
         </div>
         <div class="table-responsive">
             <table class="table table-bordered w-100" id="tb_project">

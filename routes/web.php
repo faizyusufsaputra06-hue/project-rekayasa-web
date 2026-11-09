@@ -33,6 +33,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
         return view('admin.home');
     })->name('home');
 
+    Route::get('/projects/pdf', [AdminProjectController::class, 'exportPdf'])->name('projects.pdf');
     Route::resource('projects', AdminProjectController::class);
 
 });
