@@ -12,9 +12,13 @@
         @foreach ($projects as $project)
             <div class="col-md-4">
                 <div class="card h-100 shadow-sm border-0">
-                    <img src="{{ asset('images/' . $project->image) }}" 
-                    class="card-img-top" alt="{{ $project->title }}"
-                    style="height: 200px; object-fit: cover;">
+                    <img src="{{ str_starts_with($project->image ?? '', 'projects/')
+                        ? asset('storage/' . $project->image)
+                        : asset('images/' . $project->image) }}"
+                        class="card-img-top"
+                        alt="{{ $project->title }}"
+                        style="height: 200px; object-fit: cover;"
+                        onerror="this.style.display='none';">
                     <div class="card-body">
                         <span 
                             class="badge {{ $project->status == 'selesai' ? 'bg-success' : 'bg-warning' }}
