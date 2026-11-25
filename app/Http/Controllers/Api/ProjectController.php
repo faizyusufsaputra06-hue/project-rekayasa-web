@@ -26,4 +26,24 @@ class ProjectController extends Controller
             'data' => $project,
         ], 201);
     }
+    public function update(Request $request, string $id)
+    {
+        $project = Project::findOrFail($id);
+
+        $validate = $request->validate([
+            'title' => 'sometimes|required|string|max:255',
+            'description' => 'nullable|string',
+            'teknologi' => 'nullable|string',
+            'image' => 'nullable|string',
+            'status' => 'nullable|string',
+        ]);
+
+        $project->update($validate);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data project berhasil diperbarui.',
+            'data' => $project,
+        ]);
+    }
 }

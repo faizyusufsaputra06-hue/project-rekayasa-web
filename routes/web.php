@@ -1,10 +1,12 @@
 
 <?php
 
+use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\AdminProjectController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\projectController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 // LOGIN
@@ -33,6 +35,10 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
         return view('admin.home');
     })->name('home');
 
+    // ROUTE USERS
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
+    // ROUTE PROJECTS
     Route::get('/projects/pdf', [AdminProjectController::class, 'exportPdf'])->name('projects.pdf');
     Route::resource('projects', AdminProjectController::class);
 
